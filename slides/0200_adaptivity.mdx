@@ -1,0 +1,28 @@
+---
+layout: row,dask
+section: Python Scaling
+---
+
+<Column>
+## Scheduling
+
+Adaptivity
+
+Dask jobqueue can also adapt the number of workers dynamically based on current load (if specified).
+
+```python
+cluster.adapt(minimum=1, maximum=10)
+cluster.adapt(maximum_memory="10 TB") 
+```
+</Column>
+<Note>
+
+An additional very useful feature is the adaptivity of the dask scheduler. This allows to dynamically change the number of workers based on the current load. 
+Your cluster administrator will be thankful if you use this feature as we dont want to allocate resources which are barely used.
+
+[click]
+
+</Note>
+
+<Navbar sections={false} />
+

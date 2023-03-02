@@ -1,0 +1,28 @@
+---
+layout: dask
+section: Python Scaling
+---
+
+## IO
+
+<img src="./dask/io_reading_times.png" alt="Plot" style={{height:"100%"}}/>
+
+
+
+<Note>
+
+Overall the results for reading and writting are quite messy as this depends on the cluster usage
+and maybe other factors which can't be controlled. The results are not very consistent and the
+error bars are quite large.
+
+
+But in mean dask seems to perform better than the cpp ORC core library. This could also be an artifact but this is what we see with my current setup and hardware.
+
+We can also turn this arround and look at the throughput.
+
+[next]
+
+</Note>
+
+<Navbar sections={false} />
+

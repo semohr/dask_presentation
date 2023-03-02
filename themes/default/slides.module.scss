@@ -1,0 +1,346 @@
+@use './layouts/titlepage';
+@use './layouts/row';
+@use './layouts/dask';
+@use './layouts/edge';
+@import './colors.scss';
+
+.main {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: $dark;
+    color: $light;
+}
+
+$navbar-height: 5rem;
+.slide {
+    height: calc(100% - $navbar-height);
+    width: 100%;
+    position: relative;
+
+    p {
+        margin: 0;
+        padding-bottom: 2rem;
+    }
+    ul {
+        margin: 0;
+    }
+
+    li {
+        padding: 0.5rem;
+    }
+
+    border-top: 5px solid $light;
+
+    table {
+        table-layout: fixed;
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 2.5rem;
+
+        th {
+            padding: 1rem;
+        }
+        td {
+            border: 1px solid #d1cfc7;
+            padding: 1rem;
+            height: 100px;
+        }
+    }
+}
+
+.Source {
+    font-size: 2rem !important;
+    color: $secondary;
+    p {
+        display: inline;
+        font-size: 2rem !important;
+    }
+    a {
+        color: $secondary;
+        font-size: 2rem !important;
+    }
+}
+
+/** The Navbar is shown at the bottom of each
+* slide. It contains the slide number and the current section.
+* 
+*/
+.navbar {
+    height: $navbar-height;
+    display: grid;
+    grid-template-columns: 2fr 10fr 2fr;
+    grid-template-rows: 1fr 1fr 1fr;
+
+    background-color: $accent;
+    border-top: 0.5rem solid $light;
+
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+
+    .Logo {
+        grid-column: 1/2;
+        grid-row: 1/4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.2rem;
+        padding: 1rem;
+        color: $dark;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: left;
+        width: 100%;
+    }
+
+    .SectionProgress {
+        grid-column: 2;
+        grid-row: 1 / 4;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+    }
+    .CurrentSlide {
+        grid-column: 3;
+        grid-row: 1 / 4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        padding: 1.5rem;
+
+        .current {
+            width: 50%;
+            text-align: right;
+            font-size: 1.8rem;
+            color: $dark;
+            margin-right: 0.5rem;
+        }
+
+        .total {
+            width: 50%;
+            font-size: 1.8rem;
+            color: $dark;
+            text-align: left;
+            font-weight: 300;
+            // no text wrap
+            white-space: nowrap;
+            &::before {
+                content: '/ ';
+            }
+        }
+    }
+}
+
+// Slides Component layout is done above
+// Here is just styling
+.slide {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h1 {
+        text-align: center;
+        font-size: 5rem;
+        align-self: baseline;
+        color: $primary;
+        margin-top: 0;
+    }
+    h2 {
+        text-align: center;
+        font-size: 3.5rem;
+        align-self: baseline;
+        color: $primary;
+        margin-top: 0;
+    }
+    h3 {
+        text-align: center;
+        font-size: 2rem;
+    }
+    ol,
+    ul {
+        font-size: 4rem;
+    }
+    p {
+        font-size: 2.5rem;
+        text-align: left;
+
+        :global(.math) {
+            font-size: inherit;
+        }
+    }
+
+    a {
+        color: $secondary;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    pre {
+        font-size: 1.5rem;
+        border: 0.25rem solid $light;
+    }
+}
+
+$mainColor: $dark;
+$baseColor: $light;
+$radiusNode: 1.5rem;
+$widthEdge: 0.5rem;
+$borderWidth: calc($radiusNode / 4);
+
+// Progress bar showing the current slide
+// adapted from https://codepen.io/tsneville/pen/mPxLVR
+.progress {
+    // Styling the progress bar
+    // And sections
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: calc($radiusNode * 2 + $widthEdge * 2);
+
+    .label {
+        width: 100%;
+        text-align: center;
+        font-size: 1.2rem;
+        color: $light;
+    }
+    .bar {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+
+        .step {
+            width: 100%;
+            position: relative;
+
+            .node {
+                border: $borderWidth solid $baseColor;
+                background-color: $baseColor;
+                border-radius: $radiusNode;
+                height: $radiusNode;
+                width: $radiusNode;
+                position: absolute;
+                top: calc(50% - $radiusNode * 0.5);
+                left: calc(50% - $radiusNode * 0.5);
+                margin-left: 0;
+            }
+
+            &:not(:last-child):before {
+                content: '';
+                display: block;
+                position: absolute;
+                left: calc(50% - $radiusNode * 0.5);
+                top: calc(50% - $widthEdge / 2);
+                background-color: $baseColor;
+                height: $widthEdge;
+                width: 100%;
+            }
+
+            /** Styling if a slide is completed */
+            &._completed {
+                &:before {
+                    background-color: $mainColor;
+                }
+                .node {
+                    background-color: $mainColor;
+                    border-color: $mainColor;
+                }
+            }
+
+            /** Styling if a slide is currently active
+            */
+            &._current {
+                .node {
+                    border-color: $mainColor;
+                }
+                &:before {
+                    // Add gradient to the edge
+                    background: $mainColor;
+                    background: -moz-linear-gradient(
+                        left,
+                        $mainColor 0%,
+                        $baseColor 100%
+                    );
+                    background: -webkit-linear-gradient(
+                        left,
+                        $mainColor 0%,
+                        $baseColor 100%
+                    );
+                    background: linear-gradient(
+                        to right,
+                        $mainColor 0%,
+                        $baseColor 100%
+                    );
+                }
+            }
+        }
+    }
+}
+
+/** Slide control component for example presentation 
+* 
+*/
+.SlideControl {
+    position: absolute;
+    top: 75%;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 5rem;
+        width: fit-content;
+        padding-inline: 0;
+        color: $accent;
+        cursor: pointer;
+        position: relative;
+
+        svg {
+            color: $accent;
+            width: fit-content;
+        }
+
+        &:hover {
+            color: $accent;
+        }
+    }
+    .next {
+        &::before {
+            content: '';
+            display: block;
+            width: 10px;
+            height: calc(100% + 4px);
+            right: 75%;
+            position: absolute;
+            background-color: $dark;
+        }
+    }
+
+    .prev {
+        &::before {
+            content: '';
+            display: block;
+            width: 10px;
+            height: calc(100% + 4px);
+            left: 75%;
+            position: absolute;
+            background-color: $dark;
+        }
+    }
+}

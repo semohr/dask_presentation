@@ -1,0 +1,65 @@
+---
+layout: row,dask
+section: Python Scaling
+---
+
+
+<Column>
+
+## Introduction/Example
+
+```python
+import numpy as np
+import pandas as pd
+
+# Load data 
+data = pd.read_csv('data.csv')
+
+def my_awesome_analysis(data):
+    result = np.mean(data["col1"] * data["col2"])
+    return result
+
+# Analyse data
+results = my_awesome_analysis(data)
+
+# Save results
+```
+
+Using the same pipline might not be possible for large datasets. E.g.
+
+<Traceback 
+  type="MemoryError"
+  msg="Unable to allocate 1.21TiB for an array..."
+/>
+
+</Column>
+
+<Column>
+
+<img src="./dask/Einstein_Data.png" alt="Plot"/>
+
+</Column>
+
+
+<Note>
+
+
+Most likely you will first run into a memory problem.
+
+Specifically, you are unable to allocate the 1.21Tebibyte of data. This is a typical problem if working with
+numpy as it loads all data into ram. Also numpy does not scale to multiple devices.
+
+This is a quite typical problem if using python for data analysis and scientific computing. To solve this
+problem you could now recreate your analysis in a different lanugage or using another
+library. 
+But this mostly not wanted as it takes a lot of time, effort and can even introduce more problems.
+
+Thus a solution is needed for the lazy python using scientist or data analysts to reuse and scale their previous work
+to acomodate larger datasets or more compute resources.
+
+[click]
+
+
+</Note>
+
+<Navbar sections={false} />

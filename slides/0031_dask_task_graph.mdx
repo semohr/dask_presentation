@@ -1,0 +1,68 @@
+---
+layout: row,dask
+section: Python Scaling
+---
+
+<Column>
+
+## Task graph
+
+Let's take this small example:
+
+```python
+def inc(i):
+    return i + 1
+
+def add(a, b):
+    return a + b
+
+x = 1
+y = inc(x)
+z = add(y, 10)
+
+```
+
+</Column>
+
+<Column>
+
+<div style={{visibility: "hidden"}}>
+## Task graph
+</div>
+
+Internally dask encodes a graph as dict:
+
+```python
+d = {'x': 1,
+     'y': (inc, 'x'),
+     'z': (add, 'y', 10)}
+
+# Tasks are tuples
+task = (function, *args,)
+
+# kwargs can also be used
+from dask.utils import apply
+task = (apply, func, args, kwargs)
+
+# Execution
+get(d, 'z')
+```
+
+
+</Column>
+
+
+<Note>
+
+Internally dask would represent these computation as dicts, where the keys are the name of the variable and the values are the tasks that have to be performed.
+
+Tasks are tuples containing the function and the arguments that have to be passed to the task entry point i.e. a function.
+
+This is by design a directed acyclic graph (DAG) and will look like this:
+
+[click]
+
+</Note>
+
+<Navbar sections={false} />
+

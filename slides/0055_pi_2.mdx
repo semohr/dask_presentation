@@ -1,0 +1,26 @@
+---
+layout: dask
+section: Python Scaling
+---
+
+## Approximation of $\pi$
+
+<img src="./dask/approximating_pi_scaling.png" alt="Plot" style={{height:"100%"}}/>
+
+
+
+<Note>
+
+Here we see that scalability probablity has a threshold or at least seems to be converging. Thus,throwing more cores at the problem does not necessarily improve the performance. At least that holds for these
+two implementations.
+
+Lastly I looked at data read and write performance. Here I used the apache orc format, which is similar to parquet, but easier to work with.
+
+Dask dataframe already has a read_orc function, which I used and compared to the core c++ orc library. 
+
+
+
+</Note>
+
+<Navbar sections={false} />
+

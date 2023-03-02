@@ -1,0 +1,79 @@
+---
+layout: row,dask
+section: Python Scaling
+---
+
+<Column>
+## Scheduling
+
+Local Cluster
+```python
+from dask.distributed import LocalCluster, Client
+# Uses number of cores on your machine
+# as number of workers and splits memory
+# evenly between them
+cluster = LocalCluster()
+client = Client(cluster)
+
+# Compute
+...
+```
+Is done by default when you import dask
+
+</Column>
+
+<Column>
+<div style={{visibility: "hidden"}}>
+## Distribute your work
+</div>
+
+Distribute via job queuing system
+```python
+from dask_jobqueue import SGECluster
+
+cluster = SGECluster(
+    queue="rostam.q",
+    cores=1,
+    processes=1,
+    # For memory requests, this must be specified
+    memory="192GB",  
+    # Network interface: infinityband
+    interface="ib0", 
+    # Location of fast local storage like /scratch 
+    local_directory="/scratch03.local/smohr/dask",
+    log_directory="/scratch03.local/smohr/dask/logs",
+    walltime="1500000",
+)
+client = Client(cluster)
+
+# Compute using cluster
+...
+```
+
+
+</Column>
+
+
+<Note>
+
+
+Generally you always define the cluster you want to use and
+than connect your client to the cluster.
+
+For local machine resources this is done by simply importing dask or you can also spcifically define it by
+importing the LocalCluster. And connection the client to the cluster.
+
+Equally as simple is to create a cluster using a job queuing system. The dask_jobqueue package provides interfaces to most common job queuing systems.
+
+
+[click]
+
+
+
+Now to the most interesting part, how does dask perform and scale?
+
+
+</Note>
+
+<Navbar sections={false} />
+

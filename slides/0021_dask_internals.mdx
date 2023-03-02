@@ -1,0 +1,37 @@
+---
+layout: dask
+section: Python Scaling
+---
+
+<div style={{display:"flex", justifyContent:"center", height:"100%"}}>
+    <img src="./dask/dask-overview-collections.svg"/>
+</div>
+
+
+<Source style={{visibility:"hidden"}}>
+    <a href="https://www.dask.org/" target="_blank">https://www.dask.org/</a> (slightly modified)
+</Source>
+
+
+<Note>
+
+First up, collections. Here dask supplies a number of high and low level 
+interfaces to injest, generate and manipulate data.
+
+
+We have already seen two most used high level interface, the dataframe and array in
+the earlier example.
+These dask modules are designed to be interchangeable their normal counterpart api.
+
+
+To make this work internally, dask splits pandas dataframes or numpy arrays into many smaller chunks
+and then distributed across the workers. 
+
+For example dask coordinate many Numpy arrays, arranged into chunks within a grid.
+
+[click]
+
+</Note>
+
+<Navbar sections={false} />
+

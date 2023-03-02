@@ -1,0 +1,50 @@
+---
+layout: row,dask
+section: Python Scaling
+---
+
+
+<Column>
+
+## Task graph
+
+Let's take this small example:
+
+```python
+def inc(i):
+    return i + 1
+
+def add(a, b):
+    return a + b
+
+x = 1
+y = inc(x)
+z = add(y, 10)
+
+```
+
+</Column>
+
+
+<Column>
+
+<img src="./dask/dask-simple.png"/>
+
+</Column>
+
+
+
+<Note>
+
+Here we have the same operations as defined before we want to compute `z` and list all
+dependencies below which can than be executed starting from the bottom.
+
+Using this framework gives us now the possibility to create abitrarily complex graphs on our own and run
+them using dask.
+
+[click]
+
+</Note>
+
+<Navbar sections={false} />
+

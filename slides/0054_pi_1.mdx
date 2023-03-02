@@ -1,0 +1,24 @@
+---
+layout: dask
+section: Python Scaling
+---
+
+## Approximation of $\pi$
+
+<img src="./dask/approximating_pi_32_cores.png" alt="Plot" style={{height:"100%"}}/>
+
+
+
+<Note>
+
+All methods scale quite similarly, but interesting dask beeing more performant than numpy
+even on a single machine. And again using mpi and mkl is the most performant method, but might be not the most convinient to implement and use.
+
+Before the questions comes, yes I checked that the same random number generator is used in all cases.
+
+Again we can also look at the scalability of the different methods.
+
+</Note>
+
+<Navbar sections={false} />
+

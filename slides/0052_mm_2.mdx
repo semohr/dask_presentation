@@ -1,0 +1,28 @@
+---
+layout: dask
+section: Python Scaling
+---
+
+## Matrix multiplication
+
+
+<img src="./dask/matrix_multiplication_160_cores_5_nodes.png" alt="Plot" style={{height:"100%"}}/>
+
+
+
+<Note>
+
+Here i used 160 cores in a distributed setup.
+
+For small matrices and computations numpy is faster but for bigger matrices and computations the distributed approaches are faster.
+
+Dask and c++ version quite similar in performance. But the c++ version is a bit faster.
+
+We can now also look at scaling, variing the number of cores.
+
+[next]
+
+</Note>
+
+<Navbar sections={false} />
+

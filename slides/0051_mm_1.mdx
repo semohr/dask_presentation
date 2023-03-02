@@ -1,0 +1,29 @@
+---
+layout: dask
+section: Python Scaling
+---
+
+## Matrix multiplication
+
+
+<img src="./dask/matrix_multiplication_32_cores_1_node.png" alt="Plot" style={{height:"100%"}}/>
+
+
+
+<Note>
+
+Here on one machine with 32 cores I have run matrix multiplication tasks with matrices of different size. 
+
+Numpy and the c++ version performe quite similar to each other. As both implementations use the same cblas_dgemm function call the similar performance was expected. 
+
+Dask look a bit worse of but that was expected, as it uses numpy but has some overhead for the task scheduling and communication thus it is a bit slower.
+
+All as expected but good to see that in the experiment.
+
+Next we can look at more cores and more machines.
+[next]
+
+</Note>
+
+<Navbar sections={false} />
+

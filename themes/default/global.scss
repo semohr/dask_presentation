@@ -1,0 +1,96 @@
+@import './colors.scss';
+/** This is the global style file which defines mainly layout and typography styles. */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto';
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.react-icons {
+    vertical-align: middle;
+    background-color: aqua;
+}
+
+.hljs {
+    background: unset !important;
+}
+
+.math {
+    background: unset !important;
+    font-size: 3rem;
+}
+
+.Sources {
+    p {
+        font-size: 2rem !important;
+    }
+}
+
+// Blockquote CSS
+blockquote {
+    border-left: 3px solid $accent;
+    color: $light;
+    font-family: Georgia, Times, 'Times New Roman', serif;
+    font-size: 1.25em;
+    font-style: italic;
+    line-height: 1.8em;
+    margin: 1.1em -4em;
+    padding: 1em 2em;
+    position: relative;
+    transition: 0.2s border ease-in-out;
+    z-index: 0;
+    width: 100%;
+    max-width: 1100px;
+    &:before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: -4px;
+        height: 2em;
+        background-color: $dark;
+        width: 5px;
+        margin-top: -1em;
+    }
+    &:after {
+        content: '"';
+        position: absolute;
+        top: calc(50% + 0.33em);
+        left: -0.5em;
+        color: $accent;
+        font-family: 'Times New Roman';
+        font-style: normal;
+        text-align: center;
+        text-indent: -2px;
+        font-size: 2.5em;
+        width: 1em;
+        margin-top: -0.5em;
+        transition: 0.2s all ease-in-out, 0.4s transform ease-in-out;
+    }
+
+    cite {
+        display: block;
+        font-size: 0.75em;
+        line-height: 1.8em;
+        margin-top: 1em;
+    }
+
+    p {
+        padding-bottom: 0 !important;
+        font-size: 4rem !important;
+        line-height: 4rem;
+    }
+}
+
+.fs4 {
+    font-size: 4rem !important;
+    background-color: red;
+    ul {
+        font-size: 10rem !important;
+    }
+}
+

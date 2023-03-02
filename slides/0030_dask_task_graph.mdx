@@ -1,0 +1,49 @@
+---
+layout: row,dask
+section: Python Scaling
+---
+
+<Column>
+
+## Task graph
+
+
+Let's take this small example:
+
+```python
+def inc(i):
+    return i + 1
+
+def add(a, b):
+    return a + b
+
+x = 1
+y = inc(x)
+z = add(y, 10)
+
+```
+
+</Column>
+
+<Column>
+
+
+</Column>
+
+
+<Note>
+
+To understand what is happening under the hood a bit better,  let's have a look at this small example.
+
+Here we start with a number `x=1` than increment it by one and add 10 to the result `z``.
+
+Here is quite easy to understand which operation has to happen first and which operations depend on the result of the previous operation.
+
+[click]
+
+Internally dask would represent these computation as dicts, where...
+
+</Note>
+
+<Navbar sections={false} />
+

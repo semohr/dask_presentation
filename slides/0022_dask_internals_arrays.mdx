@@ -1,0 +1,45 @@
+---
+layout: row,dask
+section: Python Scaling
+---
+
+<Column>
+
+## Example: Dask array
+
+<div style={{marginBottom:"2rem", height:"100%", display:"flex"}}>
+    <img src="./dask/dask-array-black-text.svg"/>
+</div>
+
+Dask array coordinates many Numpy arrays, arranged into chunks within a grid.
+
+<Source >
+    <a href="https://www.dask.org/" target="_blank">https://example.dask.org/array</a> (slightly modified)
+</Source>
+
+
+</Column>
+
+<Note>
+
+
+[click]
+
+We can perform most numpy operation on this array as we would on a normal numpy array.
+
+Depending on the operation data is exchanged between the chunks. This is done automatically and you dont have to think about it.
+
+Dask normally defines the chunk size on its own depending on your environment. But you can also define it yourself.
+
+
+Dask also allows to precompute memory usage of chunks and the total memory usage of the array without actually computing the array.
+
+
+Second there is the task graph.
+
+[click]
+
+</Note>
+
+<Navbar sections={false} />
+

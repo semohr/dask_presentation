@@ -1,0 +1,40 @@
+---
+layout: dask
+section: Python Scaling
+---
+
+<div style={{display:"flex", justifyContent:"center", height:"100%"}}>
+    <img src="./dask/dask-overview.svg"/>
+</div>
+
+<Source>
+    <a href="https://www.dask.org/" target="_blank">https://www.dask.org/</a> (slightly modified)
+</Source>
+
+
+<Note>
+
+Dask mainly consitst of three components:
+
+First are the collections.
+Second is the task graph.
+Third is the scheduling of said task graphs.
+
+
+[click]
+
+First up, collections. Here dask supplies a number of high and low level 
+interfaces to injest, generate and manipulate data.
+
+
+[click]
+
+
+Easy to use high level interfaces, such as array and dataframe, are built on top of the low level graph specification. This allows for easy customization and extension. Very convinient.
+
+Dask also allows for low level task scheduling with custom workloads and data structures. This is useful for people who have complex problems or non-Python workloads, and want to execute efficiently on a cluster.
+
+</Note>
+
+<Navbar sections={false} />
+

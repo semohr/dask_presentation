@@ -1,0 +1,38 @@
+---
+layout: row,dask
+section: Python Scaling
+---
+
+<Column>
+
+## Scheduling
+
+<img src="./dask/dask-scheduler-overview.png" style={{width:"100%", marginBottom:"3rem"}}/>
+
+
+
+<Source>
+<a href="https://www.datarevenue.com/en-blog/understanding-dask-architecture-client-scheduler-workers"> Datarevenue: Dask Architecture </a> (modified)
+</Source>
+
+</Column>
+<Note>
+
+Simplified, Dask scheduling consists of three parts, the client, the scheduler, and the workers.
+
+As a developer or scientist you'll mainly communicate with the Dask **Client**. It send instructions to the Scheduler and collects results from the Workers. On this client level, the DAG is created.
+
+The **Scheduler** is the central coordinator between the workers and the client. It tracks metrics, and allows the workers to coordinate. The scheduler also decides 
+which computations to run, when and on which worker.
+The scheduler is a single point of failure but generally a very stable dask component.
+
+If a worker crashes or encounters an error, the scheduler will reassign the work to another worker.
+
+There are multiple ways to define Dask Workers.
+
+[click]
+
+</Note>
+
+<Navbar sections={false} />
+
